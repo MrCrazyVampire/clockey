@@ -23,7 +23,6 @@ class _HomePageState extends State<HomePage> {
     var timezoneString = now.timeZoneOffset.toString().split('.').first;
     var offsetSign = '';
     if (!timezoneString.startsWith('-')) offsetSign = '+';
-    print(timezoneString);
 
     return Scaffold(
       backgroundColor: Color(0xFF2D2F41),
@@ -129,35 +128,36 @@ class _HomePageState extends State<HomePage> {
 
   Consumer<MenuInfo> buildMenuMethod(MenuInfo currentMenuInfo) {
     return Consumer<MenuInfo>(
-      builder:(Widget child, MenuInfo value,BuildContext context),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 16.0),
-        child: TextButton(
-          style: TextButton.styleFrom(
-            backgroundColor: currentMenuInfo.title == '    Clock    '
-                ? Colors.grey.shade900
-                : Colors.transparent,
+      builder: (BuildContext context, MenuInfo value, Widget? child) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 16.0),
+          child: TextButton(
+            style: TextButton.styleFrom(
+              backgroundColor: currentMenuInfo.title == '    Clock    '
+                  ? Colors.grey.shade900
+                  : Colors.transparent,
+            ),
+            onPressed: () {
+              var menuInfo = Provider.of<MenuInfo>(context, listen: false);
+              menuInfo.updateMenu(currentMenuInfo);
+            },
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Image.asset(
+                  currentMenuInfo.imageSource,
+                  scale: 1.5,
+                ),
+                Text(
+                  currentMenuInfo.title,
+                  style: TextStyle(
+                      fontFamily: 'avenir', color: Colors.white, fontSize: 14),
+                ),
+              ],
+            ),
           ),
-          onPressed: () {
-            var menuInfo = Provider.of<MenuInfo>(context, listen: false);
-            menuInfo.updateMenu(currentMenuInfo);
-          },
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Image.asset(
-                currentMenuInfo.imageSource,
-                scale: 1.5,
-              ),
-              Text(
-                currentMenuInfo.title,
-                style: TextStyle(
-                    fontFamily: 'avenir', color: Colors.white, fontSize: 14),
-              ),
-            ],
-          ),
-        ),
-      ),
+        );
+      },
     );
   }
 }
