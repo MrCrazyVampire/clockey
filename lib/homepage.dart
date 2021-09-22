@@ -2,12 +2,13 @@
 
 import 'package:clockey/clock_view.dart';
 import 'package:clockey/data.dart';
+import 'package:clockey/enums.dart';
 import 'package:clockey/menu_info.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
-var clock = '    Clock    ';
+
 
 class HomePage extends StatefulWidget {
   @override
@@ -23,6 +24,7 @@ class _HomePageState extends State<HomePage> {
     var timezoneString = now.timeZoneOffset.toString().split('.').first;
     var offsetSign = '';
     if (!timezoneString.startsWith('-')) offsetSign = '+';
+    if (currentMenuInfo.MenuName == value.MenuName) print('hello');
 
     return Scaffold(
       backgroundColor: Color(0xFF2D2F41),
@@ -133,12 +135,12 @@ class _HomePageState extends State<HomePage> {
           padding: const EdgeInsets.symmetric(vertical: 16.0),
           child: TextButton(
             style: TextButton.styleFrom(
-              backgroundColor: currentMenuInfo.title == '    Clock    '
+              backgroundColor: currentMenuInfo.MenuName == value.MenuName
                   ? Colors.grey.shade900
                   : Colors.transparent,
             ),
             onPressed: () {
-              var menuInfo = Provider.of<MenuInfo>(context, listen: false);
+              var menuInfo = Provider.of<MenuInfo>(context, listen = false);
               menuInfo.updateMenu(currentMenuInfo);
             },
             child: Column(
@@ -149,7 +151,7 @@ class _HomePageState extends State<HomePage> {
                   scale: 1.5,
                 ),
                 Text(
-                  currentMenuInfo.title,
+                  currentMenuInfo.title ?? '',
                   style: TextStyle(
                       fontFamily: 'avenir', color: Colors.white, fontSize: 14),
                 ),
