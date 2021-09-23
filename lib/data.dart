@@ -1,7 +1,10 @@
 // import 'package:clockey/theme_data.dart';
+// ignore_for_file: prefer_const_constructors
+
 import 'package:clockey/enums.dart';
-import 'menu_info.dart';
-// import 'alarm_info.dart';
+import 'package:clockey/menu_info.dart';
+import 'package:clockey/alarm_info.dart';
+import 'package:clockey/alarm_page.dart';
 
 List<MenuInfo> menuItems = [
   MenuInfo(MenuType.clock,
@@ -14,13 +17,6 @@ List<MenuInfo> menuItems = [
       title: 'Stopwatch', imageSource: 'assets/stopwatch_icon.png'),
 ];
 
-// List<AlarmInfo> alarms = [
-//   AlarmInfo(
-//       alarmDateTime: DateTime.now().add(Duration(hours: 1)),
-//       title: 'Office',
-//       gradientColorIndex: 0),
-//   AlarmInfo(
-//       alarmDateTime: DateTime.now().add(Duration(hours: 2)),
-//       title: 'Sport',
-//       gradientColorIndex: 1),
-// ];
+List<AlarmInfo> alarms = [
+  AlarmInfo(DateTime.now().add(Duration(hours: 1)), description: 'Office'),
+];

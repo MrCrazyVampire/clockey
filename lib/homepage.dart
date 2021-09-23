@@ -28,6 +28,7 @@ class _HomePageState extends State<HomePage> {
           ),
           VerticalDivider(
             color: Colors.white54,
+            thickness: 2,
             width: 1,
           ),
           Expanded(
@@ -38,20 +39,7 @@ class _HomePageState extends State<HomePage> {
                 else if (value.menuType == MenuType.alarm)
                   return AlarmPage();
                 else
-                  return Container(
-                    child: RichText(
-                      text: TextSpan(
-                        style: TextStyle(fontSize: 20),
-                        children: <TextSpan>[
-                          TextSpan(text: 'Upcoming Tutorial\n'),
-                          TextSpan(
-                            text: value.title,
-                            style: TextStyle(fontSize: 48),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
+                  return Container();
               },
             ),
           ),
@@ -67,7 +55,7 @@ class _HomePageState extends State<HomePage> {
           style: TextButton.styleFrom(
             padding: const EdgeInsets.symmetric(vertical: 16.0),
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(topRight: Radius.circular(12))),
+                borderRadius: BorderRadius.only(topRight: Radius.circular(32))),
             backgroundColor: currentMenuInfo.menuType == value.menuType
                 ? Colors.grey.shade900
                 : Colors.transparent,

@@ -14,8 +14,11 @@ class ClockPage extends StatefulWidget {
 class _ClockPageState extends State<ClockPage> {
   @override
   Widget build(BuildContext context) {
+    Timer.periodic(Duration(seconds: 1), (timer) {
+      if (mounted) setState(() {});
+    });
     var now = DateTime.now();
-
+    var formattedTime = DateFormat('hh:mm').format(now);
     var formattedDate = DateFormat('EEE, d MMM').format(now);
     var timezoneString = now.timeZoneOffset.toString().split('.').first;
     var offsetSign = '';
@@ -40,6 +43,18 @@ class _ClockPageState extends State<ClockPage> {
           ),
           Flexible(
             flex: 2,
+            fit: FlexFit.tight,
+            child: Text(
+              formattedTime,
+              style: TextStyle(
+                  fontFamily: 'avenir',
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                  fontSize: 56),
+            ),
+          ),
+          Flexible(
+            flex: 1,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -55,12 +70,12 @@ class _ClockPageState extends State<ClockPage> {
             ),
           ),
           Flexible(
-            flex: 4,
+            flex: 5,
             fit: FlexFit.tight,
             child: Align(
               alignment: Alignment.center,
               child: ClockView(
-                size: MediaQuery.of(context).size.height / 4,
+                size: MediaQuery.of(context).size.height / 3,
               ),
             ),
           ),

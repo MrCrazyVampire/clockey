@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:html';
 import 'dart:io';
 import 'dart:math';
@@ -18,7 +20,7 @@ class _ClockViewState extends State<ClockView> {
   @override
   void initState() {
     Timer.periodic(Duration(seconds: 1), (timer) {
-      setState(() {});
+      if (mounted) setState(() {});
     });
     super.initState();
   }
