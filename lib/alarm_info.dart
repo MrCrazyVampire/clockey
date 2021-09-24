@@ -1,9 +1,10 @@
+import 'package:flutter/cupertino.dart';
+
 class AlarmInfo {
-  late String title;
+  String description;
   DateTime alarmDateTime;
-  late bool isPending;
+  bool isPending;
+  List<Color> gradientColors;
 
-  var description;
-
-  AlarmInfo(this.alarmDateTime, {this.description});
+  AlarmInfo(this.alarmDateTime, {this.gradientColors, this.description});
 }

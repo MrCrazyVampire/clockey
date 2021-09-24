@@ -20,8 +20,9 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: ChangeNotifierProvider<MenuInfo>(
-          create: (context) =>
-              MenuInfo(MenuType.clock, imageSource: '', title: ''),
+          create: (context) => MenuInfo(
+                MenuType.clock,
+              ),
           child: HomePage()),
     );
   }

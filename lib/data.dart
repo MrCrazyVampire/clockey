@@ -5,6 +5,7 @@ import 'package:clockey/enums.dart';
 import 'package:clockey/menu_info.dart';
 import 'package:clockey/alarm_info.dart';
 import 'package:clockey/alarm_page.dart';
+import 'package:clockey/theme_data.dart';
 
 List<MenuInfo> menuItems = [
   MenuInfo(MenuType.clock,
@@ -18,5 +19,8 @@ List<MenuInfo> menuItems = [
 ];
 
 List<AlarmInfo> alarms = [
-  AlarmInfo(DateTime.now().add(Duration(hours: 1)), description: 'Office'),
+  AlarmInfo(DateTime.now().add(Duration(hours: 1)),
+      description: 'Office', gradientColors: GradientColors.sky),
+  AlarmInfo(DateTime.now().add(Duration(hours: 1)),
+      description: 'Office', gradientColors: GradientColors.fire),
 ];

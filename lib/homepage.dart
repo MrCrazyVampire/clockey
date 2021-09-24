@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
           ),
           Expanded(
             child: Consumer<MenuInfo>(
-              builder: (BuildContext context, MenuInfo value, Widget? child) {
+              builder: (BuildContext context, MenuInfo value, Widget child) {
                 if (value.menuType == MenuType.clock)
                   return ClockPage();
                 else if (value.menuType == MenuType.alarm)
@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget buildMenuButton(MenuInfo currentMenuInfo) {
     return Consumer<MenuInfo>(
-      builder: (BuildContext context, MenuInfo value, Widget? child) {
+      builder: (BuildContext context, MenuInfo value, Widget child) {
         return TextButton(
           style: TextButton.styleFrom(
             padding: const EdgeInsets.symmetric(vertical: 16.0),
